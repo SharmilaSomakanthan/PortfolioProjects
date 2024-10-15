@@ -44,23 +44,11 @@ order by Highestdeathcount desc
 
 
 --Showing continents with highest death rate
-select continent, sum(Highestdeathcount) as totaldeathcount from
-(
 select continent, max(total_deaths) as Highestdeathcount
 from coviddeaths
 where continent is not null
 group by continent
-
-union
-
-select location, max(total_deaths) as Highestdeathcount
-from coviddeaths
-where continent is null
-group by location
 order by Highestdeathcount desc
-)
-group by continent
-order by totaldeathcount desc
 
 -- Global numbers
 
